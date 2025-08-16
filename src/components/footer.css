@@ -1,0 +1,72 @@
+.footer-parent {
+  background-color: rgb(34, 34, 34);
+
+  /* bottom: -1850px; */
+}
+.footer-grid {
+  display: grid;
+  color: white;
+  grid-template-columns: repeat(5, 1fr);
+  /* background-color: pink; */
+  margin: 0 10% 0 10%;
+  padding: 5% 0 3% 0;
+  gap: 40px;
+}
+.first-footer-text {
+  font-size: 20px;
+  font-weight: 400;
+}
+.second-footer-text {
+  font-weight: 200;
+  font-size: 15px;
+}
+.footer-input-parent {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-input {
+  width: 140px;
+  height: 30px;
+  padding-left: 20px;
+  padding-right: 40px;
+  font-size: 13px;
+  font-weight: 300;
+  color: white;
+  outline: none;
+  border: 1px solid rgb(236, 236, 236);
+  border-radius: 5px;
+  background-color: rgba(240, 248, 255, 0);
+}
+
+.footer-send-icon {
+  position: absolute;
+  right: 15px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.footer-text-c {
+  font-size: 15px;
+  font-weight: 200;
+}
+.footer-text-icons {
+  word-spacing: 25px;
+  cursor: pointer;
+}
+
+.copyright-text {
+  text-align: center;
+  color: rgb(198, 198, 198);
+  font-weight: 300;
+  background-color: rgb(42, 42, 42);
+  padding: 1% 0 1% 0;
+}
+@media only screen and (max-width: 700px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .copyright-text {
+    padding: 3%;
+  }
+}

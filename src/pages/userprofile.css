@@ -1,0 +1,95 @@
+.manage-account-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  /* background-color: green; */
+  margin: 5% 8% 0 8%;
+}
+.manage-my-account {
+  font-weight: 600;
+  font-size: 15px;
+}
+.manage-my-account-child {
+  font-weight: 200;
+  line-height: 10px;
+  margin-left: 7%;
+  margin-bottom: 5%;
+}
+.input-family {
+  /* position: absolute; */
+  line-height: 0px;
+}
+.user-first-name {
+  font-weight: 400;
+  font-size: 15px;
+}
+.input-first-name {
+  background-color: rgb(247, 247, 247);
+  width: 78%;
+  border: none;
+  outline: none;
+  padding: 4% 7% 4% 5%;
+  font-weight: 300;
+  margin-right: 5%;
+}
+.input-grids {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* background-color: red; */
+}
+.password-changes-input {
+  margin-bottom: 2%;
+  width: 85%;
+  border: none;
+  outline: none;
+  padding: 2% 7% 2% 3%;
+  font-weight: 300;
+  margin-right: 5%;
+  background-color: rgb(247, 247, 247);
+}
+.save-changes {
+  display: flex;
+  text-align: end;
+  flex-direction: row-reverse;
+  margin-right: 5%;
+  margin-bottom: 5%;
+}
+.welcome-username {
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: end;
+  margin-right: 8%;
+  position: relative;
+  top: -15px;
+}
+.save-changes-button {
+  text-align: end;
+  margin-left: 5%;
+  cursor: pointer;
+  border: 1px solid;
+  cursor: pointer;
+  outline: none;
+  padding: 3% 7% 3% 7%;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+}
+.save-changes-button:hover {
+  background-color: #a31621;
+  color: white;
+  border: 1px solid white;
+}
+.cancel-text {
+  cursor: pointer;
+}
+@media only screen and (max-width: 700px) {
+  .manage-account-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .manage-account-flex {
+    display: flex;
+    justify-content: space-between;
+  }
+  .manage-my-account-child {
+    line-height: 20px;
+  }
+}

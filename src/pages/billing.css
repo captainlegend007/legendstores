@@ -1,0 +1,128 @@
+.billing-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* background-color: red; */
+  margin: 0 8% 0 8%;
+}
+.billing-details-text {
+  font-size: 30px;
+  margin-left: 8%;
+}
+.billing-input {
+  width: 80%;
+  padding: 3% 3% 3% 3%;
+  margin: 0 0 5% 0;
+  outline: none;
+  border: none;
+  background-color: rgb(244, 244, 244);
+  border-radius: 5px;
+}
+.items-checkout-parent {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* background-color: orange; */
+  justify-content: center;
+  align-items: center;
+}
+.checkout-image-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10%;
+}
+.items-checkout-image {
+  /* height: 50px; */
+  object-fit: cover;
+  position: absolute;
+  width: 10%;
+}
+.ordered-item {
+  position: relative;
+  left: 25%;
+}
+.ordered-item-price {
+  text-align: end;
+  margin-right: 30%;
+}
+.cart-total-parent-b {
+  background-color: rgb(255, 255, 255);
+  /* border: 1px solid;
+  border-radius: 10px; */
+  /* padding: 3% 7% 3% 7%; */
+  line-height: 10px;
+  margin-bottom: 5%;
+  width: 85%;
+}
+.cart-total-b {
+  font-size: 20px;
+  font-weight: 400;
+}
+.sub-total-div-b {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* background-color: red; */
+  height: 30px;
+}
+.cart-price-b {
+  text-align: end;
+  /* margin-right: 30%; */
+}
+.check-out-parent-b {
+  text-align: center;
+}
+.input-checkbox-parent {
+  display: flex;
+}
+.input-checkbox {
+  border-radius: 100%;
+  margin-right: 10px;
+  cursor: pointer;
+  accent-color: rgb(0, 0, 0);
+}
+.checkout-parent-grid-b {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  margin: 5% 8% 2% 0%;
+}
+.coupon-input-b {
+  padding: 3% 5% 3% 5%;
+  width: 40%;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid;
+}
+.apply-coupon-b {
+  cursor: pointer;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: white;
+  outline: none;
+  padding: 3% 7% 3% 7%;
+  margin-left: 10%;
+  border-radius: 5px;
+}
+.apply-coupon-b:hover {
+  background-color: #a31621;
+  color: white;
+  border: none;
+}
+.place-order-b {
+  cursor: pointer;
+  background-color: #a31621;
+  border: 1px solid;
+  cursor: pointer;
+  outline: none;
+  padding: 3% 7% 3% 7%;
+  margin-top: 5%;
+  border-radius: 5px;
+  color: white;
+}
+.place-order-b:hover {
+  opacity: 0.8;
+}
+.save-information-parent {
+  display: flex;
+}
+.save-information {
+  margin-left: 2%;
+}
