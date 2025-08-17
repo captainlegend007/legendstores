@@ -170,11 +170,11 @@ export const AppContextProvider = (props) => {
           getUserData();
           setIsUserLoggedIn(true);
         }
+        console.log(username);
       } catch (error) {
         toast.error(error.message);
       }
     };
-
     getAuthStatus();
   }, [backendUrl, getUserData, setIsUserLoggedIn, toast.error]);
 

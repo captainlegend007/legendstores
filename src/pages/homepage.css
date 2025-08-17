@@ -223,7 +223,7 @@
     align-items: center;
   }
   .homepage-products {
-    width: 700px;
+    width: 100%;
   }
   .flash-sales {
     display: flex;

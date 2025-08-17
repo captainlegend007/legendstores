@@ -248,4 +248,9 @@
   .brandName {
     font-size: 15px;
   }
+  @media only screen and (max-width: 450px) {
+    .search-container {
+      display: none;
+    }
+  }
 }
