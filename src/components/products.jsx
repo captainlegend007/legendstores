@@ -3,10 +3,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./carousel.css";
 import { CiHeart } from "react-icons/ci";
-import { shuffleArray, Techproducts } from "./products/TechProducts";
+import {
+  shuffleArray,
+  shuffledTechproductsb,
+  Techproducts,
+} from "./products/TechProducts";
 import { Rating } from "@smastrom/react-rating";
+import { useContext } from "react";
+import { AppContext } from "./context/AppContext";
 
 const products = () => {
+  const { findProductsImage } = useContext(AppContext);
   const settings = {
     // dots: true,
     infinite: true,
@@ -54,12 +61,18 @@ const products = () => {
         </div>
         <div>
           <Slider {...settings}>
-            {shuffleArray(Techproducts).map((product, i) => {
+            {shuffledTechproductsb.map((product, i) => {
               return (
-                <div className="image-a-div" key={i}>
+                <div className="image-a-div" key={product.id}>
                   {" "}
                   <div className="add-to-cart">Add to cart</div>
-                  <img src={product.src} className="Image-a" alt="carousel-image-a" />
+                  <img
+                    loading="lazy"
+                    src={product.src}
+                    className="Image-a"
+                    alt="carousel-image-a"
+                    onClick={() => findProductsImage(product.id)}
+                  />
                   {/* <CiHeart className="product-wishlist" /> */}
                   <div className="product-info">
                     <h2 className="product-name">{product.name}</h2>
@@ -67,7 +80,7 @@ const products = () => {
                   </div>
                   <p className="product-price">
                     <Rating
-                      style={{ maxWidth: 150 }}
+                      style={{ maxWidth: 120 }}
                       value={product.rating}
                       spaceBetween="medium"
                     />
@@ -79,11 +92,16 @@ const products = () => {
         </div>
         <div>
           <Slider {...settings}>
-            {shuffleArray(Techproducts).map((product, i) => {
+            {Techproducts.map((product, i) => {
               return (
                 <div className="image-a-div" key={i}>
                   <div className="add-to-cart">Add to cart</div>
-                  <img src={product.src} className="Image-a" alt="carousel-image-a" />
+                  <img
+                    loading="lazy"
+                    src={product.src}
+                    className="Image-a"
+                    alt="carousel-image-a"
+                  />
                   {/* <CiHeart className="product-wishlist" /> */}
                   <div className="product-info">
                     <h2 className="product-name">{product.name}</h2>
@@ -91,7 +109,7 @@ const products = () => {
                   </div>
                   <p className="product-price">
                     <Rating
-                      style={{ maxWidth: 150 }}
+                      style={{ maxWidth: 120 }}
                       value={product.rating}
                       spaceBetween="medium"
                     />

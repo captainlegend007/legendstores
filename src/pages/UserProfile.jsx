@@ -92,14 +92,14 @@ const UserProfile = () => {
           <span>
             <h3 className="manage-my-account">My Order</h3>
             <div className="manage-my-account-child">
-              <p>My Returns</p>
-              <p>My Cancellations</p>
+              <p>Returns</p>
+              <p>Cancellations</p>
             </div>
           </span>
           <span>
             <h3 className="manage-my-account">My Wishlist</h3>
             <div className="manage-my-account-child">
-              <p>My Wishlist</p>
+              <p>Wishlist</p>
             </div>
           </span>
         </div>

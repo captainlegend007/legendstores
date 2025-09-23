@@ -57,6 +57,7 @@ const Wishlist = () => {
           <div className="cart-grid" key={i}>
             <div className="product-cart-parent">
               <img
+                loading="lazy"
                 src={Techproducts[product.item - 1].src}
                 className="cart-product-image"
               />
@@ -70,8 +71,8 @@ const Wishlist = () => {
             </div>
             <div>
               <p className="cart-product">
-                $
-                {Techproducts[product.item - 1].price.replace(/[$,]/g, "") *
+                ₦
+                {Techproducts[product.item - 1].price.replace(/[₦,]/g, "") *
                   product.quantity}
                 <MdDeleteOutline
                   className="delete-icon"

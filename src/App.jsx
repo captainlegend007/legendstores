@@ -15,6 +15,7 @@ import { ToastContainer } from "react-toastify"; // Import ToastContainer
 import "react-toastify/dist/ReactToastify.css";
 import Wishlist from "./pages/Wishlist";
 import { AppContext } from "./components/context/AppContext";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 const App = () => {
   const GlobalLoadingScreen = () => (
     <div
@@ -95,67 +96,69 @@ const App = () => {
   };
 
   return (
-    <div>
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/legendstores" element={<HomePage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/products-page" element={<ProductsPage />} />
-        <Route path="/signup" element={<Signup />} />
+    <GoogleOAuthProvider clientId="529462254836-9pbm7u59sq7f2hippa57jnv1sk4rdi42.apps.googleusercontent.com">
+      <div>
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/legendstores" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/products-page" element={<ProductsPage />} />
+          <Route path="/signup" element={<Signup />} />
 
-        <Route
-          path="/cart"
-          element={
-            <ProtectedRoute>
-              <Cart />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/billing-details" element={<BillingDetails />} />
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/billing-details" element={<BillingDetails />} />
 
-        <Route
-          path="/user-profile"
-          element={
-            <ProtectedRoute>
-              <UserProfile />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/wishlist"
-          element={
-            <ProtectedRoute>
-              <Wishlist />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="*"
-          element={
-            <div style={{ padding: "50px", textAlign: "center" }}>
-              <h2>404 - Page Not Found</h2>
-              <p>The page you are looking for does not exist.</p>
-              <a href="/">Go to Home</a>
-            </div>
-          }
-        />
-      </Routes>
-      <Footer />
-    </div>
+          <Route
+            path="/user-profile"
+            element={
+              <ProtectedRoute>
+                <UserProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/wishlist"
+            element={
+              <ProtectedRoute>
+                <Wishlist />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <div style={{ padding: "50px", textAlign: "center" }}>
+                <h2>404 - Page Not Found</h2>
+                <p>The page you are looking for does not exist.</p>
+                <a href="/">Go to Home</a>
+              </div>
+            }
+          />
+        </Routes>
+        <Footer />
+      </div>
+    </GoogleOAuthProvider>
   );
 };
 

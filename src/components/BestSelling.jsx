@@ -54,13 +54,14 @@ const BestSelling = () => {
             <h1 className="best-selling-product">Best Selling Products</h1>
           </div>
           <Slider {...settings}>
-            {shuffleArray(Techproducts).map((product, i) => {
+            {Techproducts.map((product, i) => {
               return (
                 <div className="image-a-div" key={i}>
                   <div className="add-to-cart" onClick={() => addToCart(product.id)}>
                     Add to cart
                   </div>
                   <img
+                    loading="lazy"
                     src={product.src}
                     className="Image-a"
                     alt="carousel-image-a"

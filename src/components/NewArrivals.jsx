@@ -33,7 +33,7 @@ const NewArrivals = () => {
             </p>
           </div>
 
-          <img src={ps5pro} className="ps5pro" />
+          <img loading="lazy" src={ps5pro} className="ps5pro" />
         </div>
         <div className="new-arrivals-child-b">
           <div className="child-b-topa">
@@ -44,7 +44,7 @@ const NewArrivals = () => {
               </p>
               <p className="sub-collection-text-shop-now">Shop Now</p>
             </div>
-            <img src={FemaleModel} className="female-model" />
+            <img loading="lazy" src={FemaleModel} className="female-model" />
           </div>
           <div className="child-b-downb">
             <div className="downb-a">
@@ -58,7 +58,7 @@ const NewArrivals = () => {
                   Shop Now
                 </p>
               </div>
-              <img src={Speaker} className="speaker" />
+              <img loading="lazy" src={Speaker} className="speaker" />
             </div>
             <div className="downb-c">
               <div className="perfume-collection-text">
@@ -71,7 +71,8 @@ const NewArrivals = () => {
                   Shop Now
                 </p>
               </div>
-              <img src={Perfume} className="perfume" />
+
+              <img loading="lazy" src={Perfume} className="perfume" />
             </div>
           </div>
         </div>

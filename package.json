@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@react-oauth/google": "^0.12.2",
     "@smastrom/react-rating": "^1.5.0",
     "@tailwindcss/vite": "^4.1.10",
     "axios": "^1.10.0",

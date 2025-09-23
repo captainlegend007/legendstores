@@ -51,12 +51,20 @@ const BillingDetails = () => {
             <span className="items-checkout-grid">
               <div className="items-checkout-parent">
                 <div className="checkout-image-container">
-                  <img src={SignUpImage} className="items-checkout-image" />
+                  <img
+                    loading="lazy"
+                    src={SignUpImage}
+                    className="items-checkout-image"
+                  />
                   <p className="ordered-item">LCD Monitor</p>
                 </div>
                 <div className="ordered-item-price">$650</div>
                 <div className="checkout-image-container">
-                  <img src={SignUpImage} className="items-checkout-image" />
+                  <img
+                    loading="lazy"
+                    src={SignUpImage}
+                    className="items-checkout-image"
+                  />
                   <p className="ordered-item">LCD Monitor</p>
                 </div>
                 <div className="ordered-item-price">$650</div>

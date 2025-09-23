@@ -45,7 +45,7 @@ const HomePage = () => {
               <h1 className="voucher">Up to 10% off Voucher</h1>
             </div>
             <div className="homepage-products-item">
-              <img src={GooglePixel9pro} className="google-pixel" />
+              <img loading="lazy" src={GooglePixel9pro} className="google-pixel" />
             </div>
           </div>
         </div>
@@ -103,7 +103,7 @@ const HomePage = () => {
             </div>
           </div>
           <div className="music-grid-image">
-            <img src={PortableSpeaker} className="portable-speaker" />
+            <img loading="lazy" src={PortableSpeaker} className="portable-speaker" />
           </div>
         </div>
         <Products />

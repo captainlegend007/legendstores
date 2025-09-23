@@ -25,24 +25,28 @@ const ProductsPage = () => {
         <div className="products-image-grid">
           <div className="products-image-a-div">
             <img
+              loading="lazy"
               src={Techproducts[productItem.image - 1].src}
               className="products-image-a"
             />
           </div>
           <div className="products-image-a-div">
             <img
+              loading="lazy"
               src={Techproducts[productItem.image - 1].src}
               className="products-image-a"
             />
           </div>
           <div className="products-image-a-div">
             <img
+              loading="lazy"
               src={Techproducts[productItem.image - 1].src}
               className="products-image-a"
             />
           </div>
           <div className="products-image-a-div">
             <img
+              loading="lazy"
               src={Techproducts[productItem.image - 1].src}
               className="products-image-a"
             />
@@ -50,6 +54,7 @@ const ProductsPage = () => {
         </div>
         <div className="products-main-image-div">
           <img
+            loading="lazy"
             src={Techproducts[productItem.image - 1].src}
             className="products-main-image"
           />
@@ -65,8 +70,7 @@ const ProductsPage = () => {
                 {Techproducts[productItem.image - 1].price}
               </h1>
               <p className="products-details">
-                PlayStation 5 Controller Skin High quality vinyl with air channel adhesive
-                for easy bubble free install & mess free removal Pressure sensitive.
+                {Techproducts[productItem.image - 1].info}
               </p>
               <hr className="products-line" />
             </div>

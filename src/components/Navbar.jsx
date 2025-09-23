@@ -2,161 +2,14 @@ import "./navbar.css";
 import { IoSearchOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
-import { FaCartShopping, FaShop, FaUser } from "react-icons/fa6";
-import { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { FaCartShopping, FaPeopleArrows, FaShop, FaUser } from "react-icons/fa6";
+import { useContext, useEffect } from "react";
 import { AppContext } from "./context/AppContext";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { LuLogOut } from "react-icons/lu";
-
-// const Navbar = () => {
-
-//   const Logout = async () => {
-//     try {
-//       const { data } = await axios.post(backendUrl + "/api/auth/logout");
-//       console.log(data.message);
-//       if (data.success) {
-//         toast.success(data.message);
-//         setIsUserLoggedIn(false);
-//         setMenu(false);
-//         setCart([]);
-//         setWishlist([]);
-//       }
-//     } catch (error) {
-//       toast.error(error.message);
-//     }
-//   };
-
-//   return (
-//     <div className="header-parent">
-//       <h2 className="header-name">Legend Stores</h2>
-//       <span className="header-links">
-//         <ul>
-//           <Link to="/" className="no-underline-link">
-//             <li>Home</li>
-//           </Link>
-//           <Link to="/contact" className="no-underline-link">
-//             <li>Contact</li>
-//           </Link>
-//           <Link to="/about" className="no-underline-link">
-//             <li>About</li>
-//           </Link>
-//           <Link to="/signup" className="no-underline-link">
-//             <li>Sign Up </li>
-//           </Link>
-//         </ul>
-//       </span>
-
-//       <div
-//         className="search-container"
-//         style={{ top: isUserLoggedIn ? "-80px" : "-65px" }}
-//       >
-//
-//
-//             {wishlist?.length !== 0 && (
-//               <p className="cart-number-text">{wishlist.length}</p>
-//             )}
-
-//
-//
-//         <Link to="/cart" className="no-underline-link">
-//           <div className="cart-number">
-//             {cart?.length !== 0 && <p className="cart-number-text">{cart.length}</p>}
-
-//
-//           {!isUserLoggedIn && menu && (
-//             <nav className="login-dropdown">
-//               <Link to="/signup" className="no-underline-link">
-//                 <p
-//                   className="login-text"
-//                   onClick={() => {
-//                     setLogin(false);
-//                     setMenu(false);
-//                   }}
-//                 >
-//                   Login
-//                 </p>
-//               </Link>
-
-//               <Link to="/signup" className="no-underline-link">
-//                 <p
-//                   className="login-text"
-//                   onClick={() => {
-//                     setLogin(true);
-//                     setMenu(false);
-//                   }}
-//                 >
-//                   Signup
-//                 </p>
-//               </Link>
-//             </nav>
-//           )}
-
-//           {isUserLoggedIn && menu && (
-//             <nav className="login-dropdown">
-//               <div className="menu-text">
-//                 <Link to="/user-profile" className="no-underline-link">
-//                   <p className="login-text">
-//                     <FaUser className="icons" />
-//                     My Account
-//                   </p>
-//                 </Link>
-//               </div>
-
-//               <div className="menu-text">
-//                 <Link to="/signup" className="no-underline-link">
-//                   <p className="login-text">
-//                     {" "}
-//                     <FaShop className="icons" />
-//                     My Order
-//                   </p>
-//                 </Link>
-//               </div>
-
-//               <div className="menu-text">
-//                 <Link to="/signup" className="no-underline-link">
-//                   <p className="login-text">
-//                     <FaCartShopping className="icons" />
-//                     My Cart
-//                   </p>
-//                 </Link>
-//               </div>
-//               <div className="menu-text">
-//                 <Link className="no-underline-link" onClick={Logout}>
-//                   <p className="login-text">
-//                     <LuLogOut className="icons" />
-//                     Logout
-//                   </p>
-//                 </Link>
-//               </div>
-//             </nav>
-//           )}
-//         </div>
-//         {isUserLoggedIn ? (
-//           <div className="user-icon" onClick={() => setMenu(!menu)}>
-//             <h4 className="user-icon-name">
-//               {(username?.firstName || "")[0]?.toUpperCase() ? (
-//                 // If we successfully get an uppercase initial, display it
-//                 (username?.firstName || "")[0]?.toUpperCase()
-//               ) : (
-//                 // Otherwise (if username, firstName is missing, or firstName is an empty string), show the icon
-//                 <p className="user-icon-name">U</p>
-//               )}
-//             </h4>
-//           </div>
-//         ) : (
-//           // If the user is not logged in at all, always show the icon
-//           <FaUser className="heart-icon-b" onClick={() => setMenu(!menu)} />
-//         )}
-//       </div>
-
-//       {/* <hr className="header-ruler" /> */}
-//     </div>
-//   );
-// };
-
-// export default Navbar;
+import { useState } from "react";
 
 const Navbar = () => {
   const {
@@ -165,8 +18,6 @@ const Navbar = () => {
     isUserLoggedIn,
     setIsUserLoggedIn,
     backendUrl,
-    menu,
-    setMenu,
     username,
     getUserData,
     setCart,
@@ -174,11 +25,16 @@ const Navbar = () => {
     cart,
   } = useContext(AppContext);
 
+  const [menu, setMenu] = useState(false);
+  const { pathname } = useLocation();
+
   const Logout = async () => {
     try {
       const { data } = await axios.post(backendUrl + "/api/auth/logout");
       console.log(data.message);
       if (data.success) {
+        localStorage.removeItem("token");
+        delete axios.defaults.headers.common["Authorization"];
         toast.success(data.message);
         setIsUserLoggedIn(false);
         setMenu(false);
@@ -190,6 +46,10 @@ const Navbar = () => {
     }
   };
 
+  useEffect(() => {
+    setMenu(false);
+  }, [pathname]);
+
   return (
     <div>
       <div className="navbar-flex-parent">
@@ -198,10 +58,18 @@ const Navbar = () => {
         </Link>
 
         <div className="quick-links-div">
-          <p className="quick-links-tag">Home</p>
-          <p className="quick-links-tag">About</p>
-          <p className="quick-links-tag">Contact</p>
-          <p className="quick-links-tag">SignUp</p>
+          <Link to="/" className="no-underline-link">
+            <p className="quick-links-tag">Home</p>
+          </Link>
+          <Link to="/about" className="no-underline-link">
+            <p className="quick-links-tag">About</p>
+          </Link>
+          <Link to="/contact" className="no-underline-link">
+            <p className="quick-links-tag">Contact</p>
+          </Link>
+          <Link to="/signup" className="no-underline-link">
+            <p className="quick-links-tag">SignUp</p>
+          </Link>
         </div>
         <div className="rest-of-navbar-div">
           <div className="search-container">
@@ -227,9 +95,9 @@ const Navbar = () => {
                 <FaCartShopping className="shopping-icon" />
               </div>
             </Link>
-            <div className="wishlist-icon-div">
+            <div className="wishlist-icon-div-c" onClick={() => setMenu(!menu)}>
               {isUserLoggedIn ? (
-                <div className="user-icon" onClick={() => setMenu(!menu)}>
+                <div className="user-icon">
                   <h4 className="user-icon-name">
                     {(username?.firstName || "")[0]?.toUpperCase() ? (
                       // If we successfully get an uppercase initial, display it
@@ -241,7 +109,7 @@ const Navbar = () => {
                   </h4>
                 </div>
               ) : (
-                <FaUser className="user-icon" onClick={() => setMenu(!menu)} />
+                <FaUser className="user-icon-b" onClick={() => setMenu(!menu)} />
               )}
             </div>
           </div>
@@ -255,7 +123,6 @@ const Navbar = () => {
                 className="login-text"
                 onClick={() => {
                   setLogin(false);
-                  setMenu(false);
                 }}
               >
                 Login
@@ -267,7 +134,6 @@ const Navbar = () => {
                 className="login-text"
                 onClick={() => {
                   setLogin(true);
-                  setMenu(false);
                 }}
               >
                 Signup
@@ -302,6 +168,14 @@ const Navbar = () => {
                   <p className="login-text">
                     <FaCartShopping className="icons" />
                     My Cart
+                  </p>
+                </Link>
+              </div>
+              <div className="menu-text">
+                <Link to="/about" className="no-underline-link">
+                  <p className="login-text">
+                    <FaPeopleArrows className="icons" />
+                    About Us
                   </p>
                 </Link>
               </div>

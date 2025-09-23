@@ -70,3 +70,13 @@
     padding: 3%;
   }
 }
+@media only screen and (max-width: 500px) {
+  .second-footer-text,
+  .footer-text-c {
+    font-size: 12px;
+    width: 80%;
+  }
+  .footer-input {
+    width: 95%;
+  }
+}

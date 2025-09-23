@@ -3,7 +3,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./carousel.css";
 import { CiHeart } from "react-icons/ci";
-import { shuffleArray, Techproducts } from "./products/TechProducts";
+import {
+  shuffleArray,
+  Techproducts,
+  shuffledTechproducts,
+} from "./products/TechProducts";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { useContext, useState } from "react";
@@ -55,17 +59,18 @@ const Carousel = () => {
       <div className="slider-container">
         <div>
           <Slider {...settings}>
-            {shuffleArray(Techproducts).map((product, i) => {
+            {shuffledTechproducts.map((product, i) => {
               return (
-                <div className="image-a-div" key={i}>
+                <div className="image-a-div" key={product.id}>
                   <div className="add-to-cart" onClick={() => addToCart(product.id)}>
                     Add to cart
                   </div>
                   <img
+                    loading="lazy"
                     src={product.src}
                     className="Image-a"
                     alt="carousel-image-a"
-                    onClick={() => findProductsImage(i + 1)}
+                    onClick={() => findProductsImage(product.id)}
                   />
                   {/* {wishlist ? (
                     <IoIosHeartEmpty
@@ -85,7 +90,7 @@ const Carousel = () => {
                   </div>
                   <p className="product-price">
                     <Rating
-                      style={{ maxWidth: 100 }}
+                      style={{ maxWidth: 120 }}
                       value={product.rating}
                       spaceBetween="medium"
                     />

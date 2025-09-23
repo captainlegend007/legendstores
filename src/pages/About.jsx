@@ -46,7 +46,7 @@ const About = () => {
           </p>
         </div>
         <div className="our-story-image-div">
-          <img src={AboutImage} className="team-image" />
+          <img loading="lazy" src={AboutImage} className="team-image" />
         </div>
       </div>
 
@@ -91,28 +91,28 @@ const About = () => {
       <div className="team-slider-container">
         <Slider {...settings}>
           <div className="team-slide">
-            <img src={TeamA} className="team-image" />
+            <img loading="lazy" src={TeamA} className="team-image" />
             <nav className="team-text">
               <h2>John Doe</h2>
               <p>Founder and Chairman</p>
             </nav>
           </div>
           <div className="team-slide">
-            <img src={TeamB} className="team-image" />
+            <img loading="lazy" src={TeamB} className="team-image" />
             <nav className="team-text">
               <h2>Sebastian Stan</h2>
               <p>Managing Director</p>
             </nav>
           </div>
           <div className="team-slide">
-            <img src={TeamC} className="team-image" />
+            <img loading="lazy" src={TeamC} className="team-image" />
             <nav className="team-text">
               <h2>Adaline Smith</h2>
               <p>Product Designer</p>
             </nav>
           </div>
           <div className="team-slide">
-            <img src={MessiJersey} className="team-image" />
+            <img loading="lazy" src={MessiJersey} className="team-image" />
             <nav className="team-text">
               <h2>The GOAT</h2>
               <p>Lionel Messi</p>
