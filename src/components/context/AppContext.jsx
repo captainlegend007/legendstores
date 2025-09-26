@@ -156,7 +156,7 @@ export const AppContextProvider = (props) => {
     async (loginData) => {
       try {
         const { data } = await axios.post(backendUrl + "/api/auth/login", loginData);
-
+        console.log(data);
         if (data.success) {
           localStorage.setItem("token", data.token);
           axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
@@ -179,12 +179,26 @@ export const AppContextProvider = (props) => {
     [backendUrl, getUserData]
   );
 
+  // In src/components/context/AppContext.js
+
   const handleGoogleLogin = useCallback(
-    async (googleAuthToken) => {
+    async (tokenString, isOneTap = false) => {
+      // <-- ADDED isOneTap
+
+      // Stop using the length check. Rely entirely on the flag.
+      const isIdToken = isOneTap;
+
+      // Select the correct endpoint and key based on token type
+      const endpoint = isIdToken ? "/api/auth/google-one-tap" : "/api/auth/google-auth";
+      const tokenKey = isIdToken ? "id_token" : "access_token";
+
       try {
-        const { data } = await axios.post(backendUrl + "/api/auth/google-auth", {
-          googleAuthToken,
-        });
+        // Build the payload object dynamically
+        const payload = {};
+        payload[tokenKey] = tokenString;
+
+        const { data } = await axios.post(backendUrl + endpoint, payload);
+
         if (data.success) {
           localStorage.setItem("token", data.token);
           setIsUserLoggedIn(true);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
@@ -16,7 +16,9 @@ import "react-toastify/dist/ReactToastify.css";
 import Wishlist from "./pages/Wishlist";
 import { AppContext } from "./components/context/AppContext";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import OneTapLogin from "./pages/OneTapLogin";
 const App = () => {
+  const { isUserLoggedIn } = useContext(AppContext);
   const GlobalLoadingScreen = () => (
     <div
       style={{
@@ -111,6 +113,7 @@ const App = () => {
           theme="light"
         />
         <Navbar />
+        {!isUserLoggedIn && <OneTapLogin />}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/legendstores" element={<HomePage />} />

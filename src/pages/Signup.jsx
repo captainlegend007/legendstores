@@ -54,7 +54,15 @@ const Signup = () => {
 
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
+      //   const result = await handleGoogleLogin(tokenResponse.access_token);
+      //   if (result.success) {
+      //     navigate("/");
+      //   }
+      // },
+      // onError: (errorResponse) => console.log(errorResponse),
+
       const result = await handleGoogleLogin(tokenResponse.access_token);
+
       if (result.success) {
         navigate("/");
       }
